@@ -5,7 +5,12 @@ const Header = () => {
     <div style={styles.header}>
       <div style={styles.headerLeft}>
         <div style={styles.logoCircle}>
-          AIQ Logo
+          {/* Replaced text with the Government Emblem Logo */}
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
+            alt="All India Quota Logo" 
+            style={styles.aiqLogoImg} 
+          />
         </div>
         <div style={styles.headerTitles}>
           <h2 style={styles.subHeading}>अखिल भारतीय कोटा आवंटन पोर्टल</h2>
@@ -14,7 +19,11 @@ const Header = () => {
         </div>
       </div>
       <div style={styles.headerRight}>
-         <div style={styles.digitalIndiaLogo}>Digital India Logo</div>
+         <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrEXHt77b9TRbQ-eekqmlEnywJWro-XcU9kuZ4Vx7RLw&s=10" 
+            alt="Digital India Logo" 
+            style={styles.digitalIndiaImg} 
+         />
       </div>
     </div>
   );
@@ -34,17 +43,11 @@ const styles = {
     alignItems: 'center',
     gap: '16px',
   },
-  logoCircle: {
-    width: '80px',
-    height: '80px',
-    backgroundColor: '#dbeafe',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#1e40af',
-    fontWeight: 'bold',
-    border: '2px solid #1e40af',
+  // Added style specifically for the AIQ/Emblem logo
+  aiqLogoImg: {
+    width: '70px',
+    height: '70px',
+    objectFit: 'contain',
   },
   headerTitles: {
     textAlign: 'center',
@@ -72,16 +75,10 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
   },
-  digitalIndiaLogo: {
-    width: '128px',
-    height: '48px',
-    backgroundColor: '#f3f4f6',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '14px',
-    fontWeight: 'bold',
-    color: '#6b7280',
+  digitalIndiaImg: {
+    width: '120px',
+    height: 'auto',
+    objectFit: 'contain',
   }
 };
 
