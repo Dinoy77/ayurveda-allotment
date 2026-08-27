@@ -2,19 +2,20 @@ import React from 'react';
 import TopBar from '../components/TopBar';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-// import TopBar from './components/TopBar';
-// import Header from './components/Header';
-// import Navbar from './components/Navbar';
-// import NewsTicker from './components/NewsTicker';
-// import MainContent from './components/MainContent';
-// import UsefulLinks from './components/UsefulLinks';
-// import Footer from './components/Footer';
+import NewsTicker from '../components/NewsTicker';
+import MainContent from '../components/MainContent';
+import UsefulLinks from '../components/UsefulLinks';
+import Footer from '../components/Footer';
 const Homepage = () => {
   return (
     <div style={styles.container}>
       <TopBar />
       <Header />
       <Navbar />
+      <NewsTicker />
+      <MainContent />
+      <UsefulLinks />
+      <Footer />
     </div>
   );
 };
