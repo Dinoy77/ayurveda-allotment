@@ -9,7 +9,7 @@ const Header = () => {
         </div>
         <div style={styles.headerTitles}>
           <h2 style={styles.subHeading}>अखिल भारतीय कोटा आवंटन पोर्टल</h2>
-          <h1 style={styles.mainHeading}>All India Quota Allotment Portal</h1>
+          <h1 style={styles.mainHeading}>All India Merit Quota Allotment Portal</h1>
           <p style={styles.tagline}>Admission and eCounselling Services for Pharmacy & Ayurveda Session 2026</p>
         </div>
       </div>
