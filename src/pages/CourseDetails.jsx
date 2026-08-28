@@ -5,26 +5,19 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const courseData = {
-  'UG Ayurveda': {
-    title: 'UG Ayurveda Counselling',
-    news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for UG Ayurveda queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Under Graduate Ayurveda Seats Online Allotment process (Online Counseling)',
-    description: 'All the NEET Under Graduate (BAMS/BSMS/BUMS/BHMS) aspirant candidates are hereby informed that counseling for All India Quota seats/ Institutional Quota/ Domicile (internal candidates) of Central Universities, National Institutes, and Deemed Universities for the Under Graduate session 2026 will be conducted by the central committee based on the latest notifications.'
-  },
   'UG Pharmacy': {
-    title: 'UG Pharmacy Counselling',
+    title: 'UG Pharmacy',
     news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for UG Pharmacy queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Under Graduate Pharmacy Seats Online Allotment process (Online Counseling)',
-    description: 'All the Under Graduate Pharmacy (B.Pharm/Pharm.D) aspirant candidates are hereby informed that counseling for All India Quota seats and affiliated central institute seats for the Under Graduate session 2026 will be carried out purely on a merit basis in accordance with the Pharmacy Council of India guidelines.'
-  },
-  'PG Ayurveda': {
-    title: 'PG Ayurveda Counselling',
-    news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for PG Ayurveda queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Post Graduate Ayurveda Seats Online Allotment process (Online Counseling)',
-    description: 'All the AIAPGET aspirant candidates are hereby informed that counseling for All India Quota seats for Post Graduate (MD/MS - Ayurveda) courses across Central Universities and National Institutes for the Post Graduate session 2026 will be conducted transparently through this central portal.'
+    // Removed the allotment process description to ONLY show Intro and Vision
+    introHeading: 'Introduction – Association of Pharmacy Colleges of India',
+    introParagraphs: [
+      'Association of Pharmacy Colleges of India (APCI) is an organisation dedicated to facilitating merit-based, affordable and accessible pharmacy education through B.Pharm and D.Pharm programmes across India. APCI aims to bridge the gap between eligible students and recognised pharmacy institutions with available seats, helping students secure admissions based on merit, eligibility, course and location preferences, and affordable fee structures. The Association also supports the effective utilisation of available pharmacy seats while providing students and parents with transparent information, counselling and admission assistance.'
+    ],
+    visionHeading: 'Vision',
+    visionText: '"Quality Pharmacy Education – Accessible, Affordable and Merit-Based for Every Eligible Student."'
   },
   'PG Pharmacy': {
-    title: 'PG Pharmacy Counselling',
+    title: 'PG Pharmacy',
     news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for PG Pharmacy queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
     subHeading: 'Online Post Graduate Pharmacy Seats Online Allotment process (Online Counseling)',
     description: 'All the Post Graduate Pharmacy (M.Pharm) aspirant candidates are hereby informed that counseling for All India Quota seats across recognized central institutions for the Post Graduate session 2026 will be strictly processed according to the GPAT scores and respective category quotas.'
@@ -55,8 +48,32 @@ const CourseDetails = ({ initialCourse, onNavigate }) => {
             <h1 style={styles.mainHeading}>{currentData.title}</h1>
 
             <div style={styles.contentSection}>
-              <h2 style={styles.subHeading}>{currentData.subHeading}</h2>
-              <p style={styles.paragraph}>{currentData.description}</p>
+              
+              {/* Only render subHeading and description if they exist for this course */}
+              {currentData.subHeading && (
+                <h2 style={styles.subHeading}>{currentData.subHeading}</h2>
+              )}
+              {currentData.description && (
+                <p style={styles.paragraph}>{currentData.description}</p>
+              )}
+              
+              {/* Introduction Section */}
+              {currentData.introHeading && (
+                <div style={styles.extraSection}>
+                  <h3 style={styles.sectionHeading}>{currentData.introHeading}</h3>
+                  {currentData.introParagraphs.map((para, index) => (
+                    <p key={index} style={styles.paragraph}>{para}</p>
+                  ))}
+                </div>
+              )}
+
+              {/* Vision Section */}
+              {currentData.visionHeading && (
+                <div style={styles.extraSection}>
+                  <h3 style={styles.sectionHeading}>{currentData.visionHeading}</h3>
+                  <p style={styles.visionText}>{currentData.visionText}</p>
+                </div>
+              )}
             </div>
           </div>
         ) : (
@@ -119,7 +136,7 @@ const styles = {
     backgroundColor: '#15397a', 
     color: '#ffffff',
     fontSize: '15px',
-    padding: '20px 24px',
+    padding: '24px 32px',
     lineHeight: '1.5',
     flexGrow: 1,
   },
@@ -133,11 +150,31 @@ const styles = {
     marginBottom: '16px',
     color: '#000000',
   },
+  extraSection: {
+    marginBottom: '32px', // changed from marginTop to marginBottom so it spaces out properly
+  },
+  sectionHeading: {
+    fontSize: '22px', // Matched the size of previous subheadings
+    fontWeight: '600',
+    marginBottom: '16px',
+    color: '#000000', // Changed to black to match the theme
+  },
   paragraph: {
     fontSize: '15px',
     lineHeight: '1.6',
     color: '#374151',
     textAlign: 'justify',
+    marginBottom: '16px', 
+  },
+  visionText: {
+    fontSize: '16px',
+    lineHeight: '1.6',
+    color: '#111827',
+    fontWeight: '600',
+    fontStyle: 'italic',
+    padding: '16px',
+    backgroundColor: '#f3f4f6',
+    borderLeft: '4px solid #1e3a8a',
   },
   constructionContainer: {
     display: 'flex',

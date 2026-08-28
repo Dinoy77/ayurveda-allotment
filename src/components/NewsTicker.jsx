@@ -6,7 +6,7 @@ const NewsTicker = () => {
       <div style={styles.tickerLabel}>LATEST NEWS</div>
       <div style={styles.tickerMarqueeWrapper}>
         <marquee style={styles.marqueeText}>
-          All India Merit Quota Counselling 2026 Round 1 registration for Pharmacy and Ayurveda has been started. 
+          All India Merit Quota Counselling 2026 Round 1 registration for Pharmacy has been started. 
           <span style={styles.newBadge}>New</span>
         </marquee>
       </div>

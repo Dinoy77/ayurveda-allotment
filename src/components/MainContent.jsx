@@ -45,7 +45,7 @@ const MainContent = () => {
     <main style={styles.mainContent}>
       <h2 style={styles.sectionHeading}>INTRODUCTION</h2>
       <p style={styles.paragraph}>
-        In compliance with the directives of the Ministry of Ayush and Pharmacy Council of India, this portal is entrusted with the responsibility of holding online counselling for the All India Merit Quota (AIQ) seats for Under Graduate (UG) and Post Graduate (PG) courses in Ayurveda, Unani, Siddha, Homeopathy (AYUSH), and Pharmacy across the country. The central allocation ensures transparency, merit-based selection, and a streamlined admission process as per the latest gazette notifications and respective court orders.
+        Association of Pharmacy Colleges of India (APCI) is an organisation dedicated to facilitating merit-based, affordable and accessible pharmacy education through B.Pharm and D.Pharm programmes across India. APCI aims to bridge the gap between eligible students and recognised pharmacy institutions with available seats, helping students secure admissions based on merit, eligibility, course and location preferences, and affordable fee structures. The Association also supports the effective utilisation of available pharmacy seats while providing students and parents with transparent information, counselling and admission assistance.
       </p>
       <button style={styles.primaryButton}>View More</button>
 

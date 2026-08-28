@@ -4,11 +4,8 @@ const Navbar = ({ onNavigate, currentPage = 'home' }) => {
   const navItems = [
     { label: 'Home', key: 'home' },
     { label: 'About Us', key: 'about' },
-    { label: 'UG Ayurveda', key: 'UG Ayurveda' },
     { label: 'UG Pharmacy', key: 'UG Pharmacy' },
-    { label: 'PG Ayurveda', key: 'PG Ayurveda' },
     { label: 'PG Pharmacy', key: 'PG Pharmacy' },
-    { label: 'Video Tutorials', key: 'tutorials' },
     { label: 'Contact Us', key: 'contact' },
   ];
 

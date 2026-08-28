@@ -1,21 +1,24 @@
 import React from 'react';
+// 1. Import your local image file here
+import logoImage from '../assets/logo.jpeg'; 
 
 const Header = () => {
   return (
     <div style={styles.header}>
       <div style={styles.headerLeft}>
         <div style={styles.logoCircle}>
-          {/* Replaced text with the Government Emblem Logo */}
+          {/* 2. Use the imported variable in curly braces */}
           <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
-            alt="All India Quota Logo" 
+            src={logoImage} 
+            alt="Association Logo" 
             style={styles.aiqLogoImg} 
           />
         </div>
         <div style={styles.headerTitles}>
-          <h2 style={styles.subHeading}>अखिल भारतीय कोटा आवंटन पोर्टल</h2>
-          <h1 style={styles.mainHeading}>All India Merit Quota Allotment Portal</h1>
-          <p style={styles.tagline}>Admission and eCounselling Services for Pharmacy & Ayurveda Session 2026</p>
+          {/* 3. Updated Headings */}
+          <h1 style={styles.mainHeading}>Association of Pharmacy Colleges in India</h1>
+          <h2 style={styles.subHeading}>All India Merit Quota Allotment Portal</h2>
+          <p style={styles.tagline}>Admission and eCounselling Services for Pharmacy Session 2026</p>
         </div>
       </div>
       <div style={styles.headerRight}>
@@ -43,20 +46,13 @@ const styles = {
     alignItems: 'center',
     gap: '16px',
   },
-  // Added style specifically for the AIQ/Emblem logo
   aiqLogoImg: {
-    width: '70px',
-    height: '70px',
+    width: '90x',
+    height: '90px',
     objectFit: 'contain',
   },
   headerTitles: {
     textAlign: 'center',
-  },
-  subHeading: {
-    fontSize: '20px',
-    fontWeight: '600',
-    color: '#4b5563',
-    margin: '0 0 4px 0',
   },
   mainHeading: {
     fontSize: '24px',
@@ -64,6 +60,12 @@ const styles = {
     color: '#000',
     margin: '0 0 4px 0',
     letterSpacing: '0.5px',
+  },
+  subHeading: {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#1e40af', // Changed to blue to distinguish it nicely from the main heading
+    margin: '0 0 4px 0',
   },
   tagline: {
     fontSize: '14px',
