@@ -8,10 +8,9 @@ const courseData = {
   'UG Pharmacy': {
     title: 'UG Pharmacy',
     news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for UG Pharmacy queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    // Removed the allotment process description to ONLY show Intro and Vision
-    introHeading: 'Introduction – Association of Pharmacy Colleges of India',
+    introHeading: 'About Bachelor of Pharmacy (B.Pharm)',
     introParagraphs: [
-      'Association of Pharmacy Colleges of India (APCI) is an organisation dedicated to facilitating merit-based, affordable and accessible pharmacy education through B.Pharm and D.Pharm programmes across India. APCI aims to bridge the gap between eligible students and recognised pharmacy institutions with available seats, helping students secure admissions based on merit, eligibility, course and location preferences, and affordable fee structures. The Association also supports the effective utilisation of available pharmacy seats while providing students and parents with transparent information, counselling and admission assistance.'
+      'Bachelor of Pharmacy (B.Pharm) is a 4-Year Under Graduate Professional Degree focused on Medicines, Pharmaceutical Sciences, Drug Development, Manufacturing, Quality Control, and Patient Care. It prepares students for careers across the Pharmaceutical, Healthcare, Research, Manufacturing, and Regulatory Sectors.'
     ],
     visionHeading: 'Vision',
     visionText: '"Quality Pharmacy Education – Accessible, Affordable and Merit-Based for Every Eligible Student."'
@@ -19,8 +18,10 @@ const courseData = {
   'PG Pharmacy': {
     title: 'PG Pharmacy',
     news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for PG Pharmacy queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Post Graduate Pharmacy Seats Online Allotment process (Online Counseling)',
-    description: 'All the Post Graduate Pharmacy (M.Pharm) aspirant candidates are hereby informed that counseling for All India Quota seats across recognized central institutions for the Post Graduate session 2026 will be strictly processed according to the GPAT scores and respective category quotas.'
+    introHeading: 'About Master of Pharmacy (M.Pharm)',
+    introParagraphs: [
+      'Master of Pharmacy (M.Pharm) is a 2-Year Post Graduate Professional Degree designed to provide advanced, specialized knowledge in pharmaceutical sciences. It offers deep dives into specializations such as Pharmaceutics, Pharmacology, Pharmaceutical Chemistry, and Pharmacognosy. This program equips graduates with high-level research skills, clinical expertise, and industrial proficiency, preparing them for leadership roles in Research & Development, clinical trials, regulatory affairs, and academia.'
+    ]
   }
 };
 
@@ -49,7 +50,6 @@ const CourseDetails = ({ initialCourse, onNavigate }) => {
 
             <div style={styles.contentSection}>
               
-              {/* Only render subHeading and description if they exist for this course */}
               {currentData.subHeading && (
                 <h2 style={styles.subHeading}>{currentData.subHeading}</h2>
               )}
@@ -57,7 +57,6 @@ const CourseDetails = ({ initialCourse, onNavigate }) => {
                 <p style={styles.paragraph}>{currentData.description}</p>
               )}
               
-              {/* Introduction Section */}
               {currentData.introHeading && (
                 <div style={styles.extraSection}>
                   <h3 style={styles.sectionHeading}>{currentData.introHeading}</h3>
@@ -67,13 +66,13 @@ const CourseDetails = ({ initialCourse, onNavigate }) => {
                 </div>
               )}
 
-              {/* Vision Section */}
-              {currentData.visionHeading && (
+              {/* Uncomment this block if you decide to add the Vision section back */}
+              {/* {currentData.visionHeading && (
                 <div style={styles.extraSection}>
                   <h3 style={styles.sectionHeading}>{currentData.visionHeading}</h3>
                   <p style={styles.visionText}>{currentData.visionText}</p>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         ) : (
@@ -112,7 +111,7 @@ const styles = {
     fontSize: '32px',
     fontWeight: '600',
     marginBottom: '24px',
-    padding: '0 32px', 
+    padding: '0 100px', // Increased padding to center the title more
     color: '#000000',
   },
   newsBannerContainer: {
@@ -142,7 +141,7 @@ const styles = {
   },
   contentSection: {
     marginTop: '24px',
-    padding: '0 32px', 
+    padding: '0 100px', // Increased padding to push the paragraphs inward
   },
   subHeading: {
     fontSize: '22px',
@@ -151,13 +150,13 @@ const styles = {
     color: '#000000',
   },
   extraSection: {
-    marginBottom: '32px', // changed from marginTop to marginBottom so it spaces out properly
+    marginBottom: '32px',
   },
   sectionHeading: {
-    fontSize: '22px', // Matched the size of previous subheadings
+    fontSize: '22px', 
     fontWeight: '600',
     marginBottom: '16px',
-    color: '#000000', // Changed to black to match the theme
+    color: '#000000', 
   },
   paragraph: {
     fontSize: '15px',
