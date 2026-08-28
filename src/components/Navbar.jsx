@@ -1,17 +1,35 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({ onNavigate, currentPage = 'home' }) => {
+  const navItems = [
+    { label: 'Home', key: 'home' },
+    { label: 'About Us', key: 'about' },
+    { label: 'UG Ayurveda', key: 'UG Ayurveda' },
+    { label: 'UG Pharmacy', key: 'UG Pharmacy' },
+    { label: 'PG Ayurveda', key: 'PG Ayurveda' },
+    { label: 'PG Pharmacy', key: 'PG Pharmacy' },
+    { label: 'Video Tutorials', key: 'tutorials' },
+    { label: 'Contact Us', key: 'contact' },
+  ];
+
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
-        <li style={{...styles.navItem, ...styles.navItemActive}}>Home</li>
-        <li style={styles.navItem}>About Us</li>
-        <li style={styles.navItem}>UG Ayurveda</li>
-        <li style={styles.navItem}>UG Pharmacy</li>
-        <li style={styles.navItem}>PG Ayurveda</li>
-        <li style={styles.navItem}>PG Pharmacy</li>
-        <li style={styles.navItem}>Video Tutorials</li>
-        <li style={styles.navItem}>Contact Us</li>
+        {navItems.map((item) => {
+          const isActive = currentPage === item.key;
+          return (
+            <li
+              key={item.key}
+              style={{
+                ...styles.navItem,
+                ...(isActive ? styles.navItemActive : {}),
+              }}
+              onClick={() => onNavigate && onNavigate(item.key)}
+            >
+              {item.label}
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
@@ -36,10 +54,13 @@ const styles = {
   navItem: {
     padding: '12px 24px',
     cursor: 'pointer',
+    userSelect: 'none',
+    transition: 'background-color 0.2s ease',
   },
   navItemActive: {
     backgroundColor: '#eab308',
-  }
+    fontWeight: '600',
+  },
 };
 
 export default Navbar;
