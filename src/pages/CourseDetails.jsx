@@ -5,29 +5,23 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const courseData = {
-  'UG Ayurveda': {
-    title: 'UG Ayurveda Counselling',
-    news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for UG Ayurveda queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Under Graduate Ayurveda Seats Online Allotment process (Online Counseling)',
-    description: 'All the NEET Under Graduate (BAMS/BSMS/BUMS/BHMS) aspirant candidates are hereby informed that counseling for All India Quota seats/ Institutional Quota/ Domicile (internal candidates) of Central Universities, National Institutes, and Deemed Universities for the Under Graduate session 2026 will be conducted by the central committee based on the latest notifications.'
-  },
   'UG Pharmacy': {
-    title: 'UG Pharmacy Counselling',
+    title: 'UG Pharmacy',
     news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for UG Pharmacy queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Under Graduate Pharmacy Seats Online Allotment process (Online Counseling)',
-    description: 'All the Under Graduate Pharmacy (B.Pharm/Pharm.D) aspirant candidates are hereby informed that counseling for All India Quota seats and affiliated central institute seats for the Under Graduate session 2026 will be carried out purely on a merit basis in accordance with the Pharmacy Council of India guidelines.'
-  },
-  'PG Ayurveda': {
-    title: 'PG Ayurveda Counselling',
-    news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for PG Ayurveda queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Post Graduate Ayurveda Seats Online Allotment process (Online Counseling)',
-    description: 'All the AIAPGET aspirant candidates are hereby informed that counseling for All India Quota seats for Post Graduate (MD/MS - Ayurveda) courses across Central Universities and National Institutes for the Post Graduate session 2026 will be conducted transparently through this central portal.'
+    introHeading: 'About Bachelor of Pharmacy (B.Pharm)',
+    introParagraphs: [
+      'Bachelor of Pharmacy (B.Pharm) is a 4-Year Under Graduate Professional Degree focused on Medicines, Pharmaceutical Sciences, Drug Development, Manufacturing, Quality Control, and Patient Care. It prepares students for careers across the Pharmaceutical, Healthcare, Research, Manufacturing, and Regulatory Sectors.'
+    ],
+    visionHeading: 'Vision',
+    visionText: '"Quality Pharmacy Education – Accessible, Affordable and Merit-Based for Every Eligible Student."'
   },
   'PG Pharmacy': {
-    title: 'PG Pharmacy Counselling',
+    title: 'PG Pharmacy',
     news: 'Candidates may contact the 24×7 toll-free helpline number provided under the "Contact Us" section for PG Pharmacy queries. You can also contact the helpline at 9999999999 or submit their queries via email to demo@gov.in.',
-    subHeading: 'Online Post Graduate Pharmacy Seats Online Allotment process (Online Counseling)',
-    description: 'All the Post Graduate Pharmacy (M.Pharm) aspirant candidates are hereby informed that counseling for All India Quota seats across recognized central institutions for the Post Graduate session 2026 will be strictly processed according to the GPAT scores and respective category quotas.'
+    introHeading: 'About Master of Pharmacy (M.Pharm)',
+    introParagraphs: [
+      'Master of Pharmacy (M.Pharm) is a 2-Year Post Graduate Professional Degree designed to provide advanced, specialized knowledge in pharmaceutical sciences. It offers deep dives into specializations such as Pharmaceutics, Pharmacology, Pharmaceutical Chemistry, and Pharmacognosy. This program equips graduates with high-level research skills, clinical expertise, and industrial proficiency, preparing them for leadership roles in Research & Development, clinical trials, regulatory affairs, and academia.'
+    ]
   }
 };
 
@@ -55,8 +49,30 @@ const CourseDetails = ({ initialCourse, onNavigate }) => {
             <h1 style={styles.mainHeading}>{currentData.title}</h1>
 
             <div style={styles.contentSection}>
-              <h2 style={styles.subHeading}>{currentData.subHeading}</h2>
-              <p style={styles.paragraph}>{currentData.description}</p>
+              
+              {currentData.subHeading && (
+                <h2 style={styles.subHeading}>{currentData.subHeading}</h2>
+              )}
+              {currentData.description && (
+                <p style={styles.paragraph}>{currentData.description}</p>
+              )}
+              
+              {currentData.introHeading && (
+                <div style={styles.extraSection}>
+                  <h3 style={styles.sectionHeading}>{currentData.introHeading}</h3>
+                  {currentData.introParagraphs.map((para, index) => (
+                    <p key={index} style={styles.paragraph}>{para}</p>
+                  ))}
+                </div>
+              )}
+
+              {/* Uncomment this block if you decide to add the Vision section back */}
+              {/* {currentData.visionHeading && (
+                <div style={styles.extraSection}>
+                  <h3 style={styles.sectionHeading}>{currentData.visionHeading}</h3>
+                  <p style={styles.visionText}>{currentData.visionText}</p>
+                </div>
+              )} */}
             </div>
           </div>
         ) : (
@@ -95,7 +111,7 @@ const styles = {
     fontSize: '32px',
     fontWeight: '600',
     marginBottom: '24px',
-    padding: '0 32px', 
+    padding: '0 100px', // Increased padding to center the title more
     color: '#000000',
   },
   newsBannerContainer: {
@@ -119,13 +135,13 @@ const styles = {
     backgroundColor: '#15397a', 
     color: '#ffffff',
     fontSize: '15px',
-    padding: '20px 24px',
+    padding: '24px 32px',
     lineHeight: '1.5',
     flexGrow: 1,
   },
   contentSection: {
     marginTop: '24px',
-    padding: '0 32px', 
+    padding: '0 100px', // Increased padding to push the paragraphs inward
   },
   subHeading: {
     fontSize: '22px',
@@ -133,11 +149,31 @@ const styles = {
     marginBottom: '16px',
     color: '#000000',
   },
+  extraSection: {
+    marginBottom: '32px',
+  },
+  sectionHeading: {
+    fontSize: '22px', 
+    fontWeight: '600',
+    marginBottom: '16px',
+    color: '#000000', 
+  },
   paragraph: {
     fontSize: '15px',
     lineHeight: '1.6',
     color: '#374151',
     textAlign: 'justify',
+    marginBottom: '16px', 
+  },
+  visionText: {
+    fontSize: '16px',
+    lineHeight: '1.6',
+    color: '#111827',
+    fontWeight: '600',
+    fontStyle: 'italic',
+    padding: '16px',
+    backgroundColor: '#f3f4f6',
+    borderLeft: '4px solid #1e3a8a',
   },
   constructionContainer: {
     display: 'flex',

@@ -43,18 +43,31 @@ const MainContent = () => {
 
   return (
     <main style={styles.mainContent}>
-      <h2 style={styles.sectionHeading}>INTRODUCTION</h2>
+      
+      {/* Introduction Section */}
+      <h2 style={styles.sectionHeadingCentered}>Introduction – Association of Pharmacy Colleges of India</h2>
       <p style={styles.paragraph}>
-        In compliance with the directives of the Ministry of Ayush and Pharmacy Council of India, this portal is entrusted with the responsibility of holding online counselling for the All India Merit Quota (AIQ) seats for Under Graduate (UG) and Post Graduate (PG) courses in Ayurveda, Unani, Siddha, Homeopathy (AYUSH), and Pharmacy across the country. The central allocation ensures transparency, merit-based selection, and a streamlined admission process as per the latest gazette notifications and respective court orders.
+        Association of Pharmacy Colleges of India (APCI) is an organisation dedicated to facilitating merit-based, affordable and accessible pharmacy education through B.Pharm and D.Pharm programmes across India. APCI aims to bridge the gap between eligible students and recognised pharmacy institutions with available seats, helping students secure admissions based on merit, eligibility, course and location preferences, and affordable fee structures. The Association also supports the effective utilisation of available pharmacy seats while providing students and parents with transparent information, counselling and admission assistance.
       </p>
-      <button style={styles.primaryButton}>View More</button>
 
+      {/* Vision Section */}
+      <h2 style={styles.sectionHeadingCentered}>Vision</h2>
+      <div style={styles.visionContainer}>
+        <p style={styles.visionText}>
+          "Quality Pharmacy Education – Accessible, Affordable and Merit-Based for Every Eligible Student."
+        </p>
+      </div>
+
+      {/* <div style={{ textAlign: 'center' }}>
+        <button style={styles.primaryButton}>View More</button>
+      </div> */}
+
+      {/* Info Banner & Registration */}
       <div style={styles.infoBanner}>
         <p style={styles.infoBannerText}>
           All candidates must complete their registration and choice-filling before the deadline. Please beware of unauthorized agents promising guaranteed seats. The seat allotment process is strictly merit-based, transparent, and fully computer-automated.
         </p>
 
-        {/* Registration Button Area */}
         <div style={styles.registrationAction}>
           <button
             style={styles.registerButton}
@@ -137,21 +150,38 @@ const styles = {
   mainContent: {
     flexGrow: 1,
     backgroundColor: '#ffffff',
-    padding: '40px 32px',
+    padding: '40px 38px',
   },
-  sectionHeading: {
+  sectionHeadingCentered: {
     fontSize: '24px',
     fontWeight: 'bold',
-    marginBottom: '16px',
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
+    marginBottom: '20px',
+    textAlign: 'center',
+    color: '#000000',
   },
   paragraph: {
-    fontSize: '14px',
+    fontSize: '15px',
     color: '#374151',
     lineHeight: '1.6',
-    marginBottom: '24px',
+    marginBottom: '32px',
     textAlign: 'justify',
+  },
+  visionContainer: {
+    backgroundColor: '#f3f4f6', // Light gray background
+    borderLeft: '4px solid #1e3a8a', // Dark blue border on the left
+    padding: '24px 16px',
+    marginBottom: '32px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  visionText: {
+    fontSize: '16px',
+    fontWeight: '600',
+    fontStyle: 'italic',
+    color: '#111827',
+    margin: 0,
+    textAlign: 'center',
   },
   primaryButton: {
     backgroundColor: '#eab308',
@@ -175,7 +205,7 @@ const styles = {
   infoBannerText: {
     color: '#ca8a04',
     fontWeight: '500',
-    fontSize: '15px',
+    fontSize: '14px',
     margin: 0,
     display: 'flex',
     alignItems: 'center',
