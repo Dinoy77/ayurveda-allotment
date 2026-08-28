@@ -16,7 +16,7 @@ const Header = () => {
         </div>
         <div style={styles.headerTitles}>
           {/* 3. Updated Headings */}
-          <h1 style={styles.mainHeading}>Association of Pharmacy Colleges in India</h1>
+          <h1 style={styles.mainHeading}>Association of Pharmacy Colleges of India</h1>
           <h2 style={styles.subHeading}>All India Merit Quota Allotment Portal</h2>
           <p style={styles.tagline}>Admission and eCounselling Services for Pharmacy Session 2026</p>
         </div>
