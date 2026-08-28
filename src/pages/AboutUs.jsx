@@ -28,11 +28,13 @@ const AboutUs = ({ onNavigate }) => {
                             <p style={styles.paragraph}>
                                 APCI provides guidance and admission support to eligible students seeking admission to pharmacy programmes such as:
                             </p>
-                            <ul style={styles.list}>
-                                <li style={styles.listItem}>Bachelor of Pharmacy (B.Pharm)</li>
-                                <li style={styles.listItem}>Diploma in Pharmacy (D.Pharm)</li>
-                                <li style={styles.listItem}>Other eligible pharmacy-related programmes offered by recognised institutions</li>
+                            <ul style={{ ...styles.list, listStyle: 'none', paddingLeft: 0 }}>
+                                <li style={styles.listItemBold}>Bachelor of Pharmacy (B.Pharm)</li>
+                                <li style={styles.listItemBold}>Diploma in Pharmacy (D.Pharm)</li>
                             </ul>
+                            <p style={styles.paragraph}>
+                                Other eligible pharmacy-related programmes offered by recognised institutions.
+                            </p>
                             <p style={styles.paragraph}>
                                 APCI assists students by providing information regarding course eligibility, admission procedures, available institutions, academic requirements, documentation, and other relevant admission-related matters.
                             </p>
@@ -155,6 +157,12 @@ const styles = {
         fontWeight: '600',
         textAlign: 'center',
         margin: 0,
+    },
+    listItemBold: {
+        fontSize: '15px',
+        lineHeight: '1.8',
+        color: '#111827',
+        fontWeight: 'bold',
     },
 };
 
