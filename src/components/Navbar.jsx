@@ -1,29 +1,34 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = ({ onNavigate, currentPage = 'home' }) => {
+const Navbar = () => {
+  const location = useLocation();
+
   const navItems = [
-    { label: 'Home', key: 'home' },
-    { label: 'About Us', key: 'about' },
-    { label: 'UG Pharmacy', key: 'UG Pharmacy' },
-    { label: 'PG Pharmacy', key: 'PG Pharmacy' },
-    { label: 'Contact Us', key: 'contact' },
+    { label: 'Home', path: '/' },
+    { label: 'About Us', path: '/about' },
+    { label: 'UG Pharmacy', path: '/ug-pharmacy' }, 
+    { label: 'PG Pharmacy', path: '/pg-pharmacy' },
+    { label: 'Contact Us', path: '/contact' },
   ];
 
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
         {navItems.map((item) => {
-          const isActive = currentPage === item.key;
+          const isActive = location.pathname === item.path;
+          
           return (
-            <li
-              key={item.key}
-              style={{
-                ...styles.navItem,
-                ...(isActive ? styles.navItemActive : {}),
-              }}
-              onClick={() => onNavigate && onNavigate(item.key)}
-            >
-              {item.label}
+            <li key={item.path} style={styles.listItem}>
+              <Link
+                to={item.path}
+                style={{
+                  ...styles.navItem,
+                  ...(isActive ? styles.navItemActive : {}),
+                }}
+              >
+                {item.label}
+              </Link>
             </li>
           );
         })}
@@ -48,11 +53,17 @@ const styles = {
     fontWeight: '500',
     color: '#000',
   },
+  listItem: {
+    display: 'block',
+  },
   navItem: {
+    display: 'block',
     padding: '12px 24px',
     cursor: 'pointer',
     userSelect: 'none',
     transition: 'background-color 0.2s ease',
+    textDecoration: 'none',
+    color: 'inherit',   
   },
   navItemActive: {
     backgroundColor: '#eab308',

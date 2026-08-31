@@ -7,15 +7,14 @@ import MainContent from '../components/MainContent';
 import UsefulLinks from '../components/UsefulLinks';
 import Footer from '../components/Footer';
 
-const Homepage = ({ onNavigate }) => {
+const Homepage = () => {
   return (
     <div style={styles.container}>
       <TopBar />
       <Header />
-      {/* Changed currentPage={activeCourse} to currentPage="home" */}
-      <Navbar onNavigate={onNavigate} currentPage="home" />
+      <Navbar currentPage="home" />
       <NewsTicker />
-      <MainContent />
+      <MainContent /> 
       <UsefulLinks />
       <Footer />
     </div>

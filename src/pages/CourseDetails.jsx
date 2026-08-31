@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
@@ -25,14 +26,22 @@ const courseData = {
   }
 };
 
-const CourseDetails = ({ initialCourse, onNavigate }) => {
-  const currentData = courseData[initialCourse];
+// Map URL paths to the keys in your courseData object
+const routeToCourseMap = {
+  '/ug-pharmacy': 'UG Pharmacy',
+  '/pg-pharmacy': 'PG Pharmacy',
+};
+
+const CourseDetails = () => {
+  const location = useLocation();
+  const courseKey = routeToCourseMap[location.pathname];
+  const currentData = courseData[courseKey];
 
   return (
     <div style={styles.container}>
       <TopBar />
       <Header />
-      <Navbar onNavigate={onNavigate} currentPage={initialCourse} />
+      <Navbar />
 
       <main style={styles.mainWrapper}>
         {currentData ? (
@@ -66,20 +75,13 @@ const CourseDetails = ({ initialCourse, onNavigate }) => {
                 </div>
               )}
 
-              {/* Uncomment this block if you decide to add the Vision section back */}
-              {/* {currentData.visionHeading && (
-                <div style={styles.extraSection}>
-                  <h3 style={styles.sectionHeading}>{currentData.visionHeading}</h3>
-                  <p style={styles.visionText}>{currentData.visionText}</p>
-                </div>
-              )} */}
             </div>
           </div>
         ) : (
           <div style={styles.constructionContainer}>
-            <h1 style={styles.constructionHeading}>🚧 Page Under Construction 🚧</h1>
+            <h1 style={styles.constructionHeading}>🚧 Page Not Found 🚧</h1>
             <p style={styles.constructionText}>
-              The content for <strong>{initialCourse}</strong> is currently being updated. Please check back later.
+              The content you are looking for does not exist or is currently being updated.
             </p>
           </div>
         )}
@@ -111,7 +113,7 @@ const styles = {
     fontSize: '32px',
     fontWeight: '600',
     marginBottom: '24px',
-    padding: '0 100px', // Increased padding to center the title more
+    padding: '0 100px', 
     color: '#000000',
   },
   newsBannerContainer: {
@@ -141,7 +143,7 @@ const styles = {
   },
   contentSection: {
     marginTop: '24px',
-    padding: '0 100px', // Increased padding to push the paragraphs inward
+    padding: '0 100px', 
   },
   subHeading: {
     fontSize: '22px',
@@ -164,16 +166,6 @@ const styles = {
     color: '#374151',
     textAlign: 'justify',
     marginBottom: '16px', 
-  },
-  visionText: {
-    fontSize: '16px',
-    lineHeight: '1.6',
-    color: '#111827',
-    fontWeight: '600',
-    fontStyle: 'italic',
-    padding: '16px',
-    backgroundColor: '#f3f4f6',
-    borderLeft: '4px solid #1e3a8a',
   },
   constructionContainer: {
     display: 'flex',

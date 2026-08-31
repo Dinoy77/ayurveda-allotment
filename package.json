@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "formidable": "^3.5.4",
     "nodemailer": "^9.0.5",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

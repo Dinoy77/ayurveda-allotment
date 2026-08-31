@@ -1,27 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Homepage from './pages/Homepage';
 import CourseDetails from './pages/CourseDetails';
 import AboutUs from './pages/AboutUs';
+import RegistrationPage from './pages/RegistrationPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
   return (
-    <div className="App">
-      {currentPage === 'home' && (
-        <Homepage onNavigate={(page) => setCurrentPage(page)} />
-      )}
-      {currentPage === 'about' && (
-        <AboutUs onNavigate={(page) => setCurrentPage(page)} />
-      )}
-      {currentPage !== 'home' && currentPage !== 'about' && (
-        <CourseDetails
-          initialCourse={currentPage}
-          onNavigate={(page) => setCurrentPage(page)}
-        />
-      )}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/courses" element={<CourseDetails />} />
+          <Route path="/ug-pharmacy" element={<CourseDetails />} />
+          <Route path="/pg-pharmacy" element={<CourseDetails />} />
+          <Route path="/contact" element={<CourseDetails />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
