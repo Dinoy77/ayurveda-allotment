@@ -191,7 +191,7 @@ const RegistrationPage = () => {
                       <option value="">-- Select Stream --</option>
                       <option value="Physics, Chemistry, Biology">Physics, Chemistry, Biology</option>
                       <option value="Physics, Chemistry, Mathematics">Physics, Chemistry, Mathematics</option>
-                      <option value="PCMB">PCMB</option>
+                      <option value="Physics, Chemistry, Mathematics, Biology">Physics, Chemistry, Mathematics, Biology</option>
                     </select>
                   </div>
 
