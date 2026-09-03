@@ -4,14 +4,7 @@ const TopBar = () => {
   return (
     <div style={styles.topBar}>
       <div style={styles.flexRowGroup}>
-        <div style={styles.topBarText}>
-          <span style={styles.boldText}>भारत सरकार</span> <br />
-          <span>GOVERNMENT OF INDIA</span>
-        </div>
-        <div style={styles.topBarText}>
-          <span style={styles.boldText}>आयुष एवं स्वास्थ्य मंत्रालय</span> <br />
-          <span>MINISTRY OF AYUSH & HEALTH</span>
-        </div>
+        {/* Government tags removed */}
       </div>
       <div style={styles.topBarIcons}>
         <span style={styles.icon}>A-</span>
@@ -29,7 +22,7 @@ const styles = {
     backgroundColor: '#e5e7eb',
     fontSize: '12px',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     padding: '4px 16px',
     borderBottom: '1px solid #d1d5db',
