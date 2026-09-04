@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import CourseDetails from './pages/CourseDetails';
 import AboutUs from './pages/AboutUs';
 import RegistrationPage from './pages/RegistrationPage';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/pg-pharmacy" element={<CourseDetails />} />
           <Route path="/contact" element={<CourseDetails />} />
         </Routes>
+        <ChatBot />
       </div>
     </BrowserRouter>
   );
