@@ -13,6 +13,19 @@ const courseData = {
     introParagraphs: [
       'Bachelor of Pharmacy (B.Pharm) is a 4-Year Under Graduate Professional Degree focused on Medicines, Pharmaceutical Sciences, Drug Development, Manufacturing, Quality Control, and Patient Care. It prepares students for careers across the Pharmaceutical, Healthcare, Research, Manufacturing, and Regulatory Sectors.'
     ],
+    counsellingHeading: 'Counselling & Admission Process',
+    counsellingParagraphs: [
+      'The UG Pharmacy Counselling Authority assists eligible students throughout the B.Pharm counselling, admission and college-allotment process. Based on Class 12 marks, eligibility, merit, college preference and seat availability, the Authority helps students secure admission to suitable recognised pharmacy colleges across India.',
+      'Students must register by submitting the required personal and academic details, including their Class 12 marks.'
+    ],
+    eligibilityHeading: 'Eligibility',
+    eligibilityText: 'Applicants must have passed the Class 12 examination with an aggregate of at least 50% marks, having studied Physics and Chemistry, along with any one of the following subjects:',
+    eligibilityList: [
+      'Biology',
+      'Mathematics',
+      'Computer Science'
+    ],
+    conclusionText: 'Only eligible and registered students will be considered for merit analysis, counselling and seat allotment. Final admission will be subject to document verification, merit ranking, college preference, seat availability and the applicable rules of the concerned institution and regulatory authorities.',
     visionHeading: 'Vision',
     visionText: '"Quality Pharmacy Education – Accessible, Affordable and Merit-Based for Every Eligible Student."'
   },
@@ -66,12 +79,47 @@ const CourseDetails = () => {
                 <p style={styles.paragraph}>{currentData.description}</p>
               )}
               
+              {/* Introduction Section */}
               {currentData.introHeading && (
                 <div style={styles.extraSection}>
                   <h3 style={styles.sectionHeading}>{currentData.introHeading}</h3>
                   {currentData.introParagraphs.map((para, index) => (
                     <p key={index} style={styles.paragraph}>{para}</p>
                   ))}
+                </div>
+              )}
+
+              {/* Counselling Section */}
+              {currentData.counsellingHeading && (
+                <div style={styles.extraSection}>
+                  <h3 style={styles.sectionHeading}>{currentData.counsellingHeading}</h3>
+                  {currentData.counsellingParagraphs.map((para, index) => (
+                    <p key={index} style={styles.paragraph}>{para}</p>
+                  ))}
+                </div>
+              )}
+
+              {/* Eligibility Section */}
+              {currentData.eligibilityHeading && (
+                <div style={styles.extraSection}>
+                  <h3 style={styles.sectionHeading}>{currentData.eligibilityHeading}</h3>
+                  <p style={styles.paragraph}>{currentData.eligibilityText}</p>
+                  <p style={styles.list}>
+                    {currentData.eligibilityList.map((item, index) => (
+                      <p key={index} style={styles.listItem}>{item}</p>
+                    ))}
+                  </p>
+                  {currentData.conclusionText && (
+                    <p style={{...styles.paragraph, marginTop: '16px'}}>{currentData.conclusionText}</p>
+                  )}
+                </div>
+              )}
+
+              {/* Vision Section */}
+              {currentData.visionHeading && (
+                <div style={styles.extraSection}>
+                  <h3 style={styles.sectionHeading}>{currentData.visionHeading}</h3>
+                  <p style={styles.visionText}>{currentData.visionText}</p>
                 </div>
               )}
 
@@ -166,6 +214,27 @@ const styles = {
     color: '#374151',
     textAlign: 'justify',
     marginBottom: '16px', 
+  },
+  list: {
+    paddingLeft: '24px',
+    marginBottom: '16px',
+    color: '#374151',
+    fontSize: '15px',
+    lineHeight: '1.6',
+  },
+  listItem: {
+    marginBottom: '8px',
+    fontWeight:'bold'
+  },
+  visionText: {
+    fontSize: '16px',
+    lineHeight: '1.6',
+    color: '#111827',
+    fontWeight: '600',
+    fontStyle: 'italic',
+    padding: '16px',
+    backgroundColor: '#f3f4f6',
+    borderLeft: '4px solid #1e3a8a',
   },
   constructionContainer: {
     display: 'flex',

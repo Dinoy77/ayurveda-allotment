@@ -13,7 +13,6 @@ const Footer = () => {
       <div style={styles.footerTextContainer}>
         <p>Content Owned and Managed by All India Merit Quota Allotment Portal</p>
         <p>Ministry of Electronics & Information Technology, Government of India</p>
-        <p style={styles.lastUpdated}>Last Updated: Aug 24, 2026</p>
       </div>
 
       <div style={styles.footerLogos}>
