@@ -25,9 +25,7 @@ const courseData = {
       'Mathematics',
       'Computer Science'
     ],
-    conclusionText: 'Only eligible and registered students will be considered for merit analysis, counselling and seat allotment. Final admission will be subject to document verification, merit ranking, college preference, seat availability and the applicable rules of the concerned institution and regulatory authorities.',
-    visionHeading: 'Vision',
-    visionText: '"Quality Pharmacy Education – Accessible, Affordable and Merit-Based for Every Eligible Student."'
+    conclusionText: 'Only eligible and registered students will be considered for merit analysis, counselling and seat allotment. Final admission will be subject to document verification, merit ranking, college preference, seat availability and the applicable rules of the concerned institution and regulatory authorities.'
   },
   'PG Pharmacy': {
     title: 'PG Pharmacy',
@@ -67,18 +65,18 @@ const CourseDetails = () => {
                 {currentData.news}
               </div>
             </div>
-            
+
             <h1 style={styles.mainHeading}>{currentData.title}</h1>
 
             <div style={styles.contentSection}>
-              
+
               {currentData.subHeading && (
                 <h2 style={styles.subHeading}>{currentData.subHeading}</h2>
               )}
               {currentData.description && (
                 <p style={styles.paragraph}>{currentData.description}</p>
               )}
-              
+
               {/* Introduction Section */}
               {currentData.introHeading && (
                 <div style={styles.extraSection}>
@@ -110,16 +108,8 @@ const CourseDetails = () => {
                     ))}
                   </p>
                   {currentData.conclusionText && (
-                    <p style={{...styles.paragraph, marginTop: '16px'}}>{currentData.conclusionText}</p>
+                    <p style={{ ...styles.paragraph, marginTop: '16px' }}>{currentData.conclusionText}</p>
                   )}
-                </div>
-              )}
-
-              {/* Vision Section */}
-              {currentData.visionHeading && (
-                <div style={styles.extraSection}>
-                  <h3 style={styles.sectionHeading}>{currentData.visionHeading}</h3>
-                  <p style={styles.visionText}>{currentData.visionText}</p>
                 </div>
               )}
 
@@ -143,35 +133,35 @@ const CourseDetails = () => {
 const styles = {
   container: {
     fontFamily: 'system-ui, -apple-system, sans-serif',
-    backgroundColor: '#f9fafb', 
+    backgroundColor: '#f9fafb',
     color: '#333',
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
   },
   mainWrapper: {
-    flexGrow: 1, 
+    flexGrow: 1,
     backgroundColor: '#ffffff',
   },
   pageContent: {
-    paddingBottom: '40px', 
+    paddingBottom: '40px',
     width: '100%',
   },
   mainHeading: {
     fontSize: '32px',
     fontWeight: '600',
     marginBottom: '24px',
-    padding: '0 100px', 
+    padding: '0 100px',
     color: '#000000',
   },
   newsBannerContainer: {
     display: 'flex',
     marginBottom: '40px',
     border: '1px solid #0f2b5b',
-    borderTop: 'none', 
+    borderTop: 'none',
   },
   newsLabel: {
-    backgroundColor: '#0f2b5b', 
+    backgroundColor: '#0f2b5b',
     color: '#ffffff',
     fontWeight: 'bold',
     fontSize: '18px',
@@ -182,7 +172,7 @@ const styles = {
     whiteSpace: 'nowrap',
   },
   newsContent: {
-    backgroundColor: '#15397a', 
+    backgroundColor: '#15397a',
     color: '#ffffff',
     fontSize: '15px',
     padding: '24px 32px',
@@ -191,7 +181,7 @@ const styles = {
   },
   contentSection: {
     marginTop: '24px',
-    padding: '0 100px', 
+    padding: '0 100px',
   },
   subHeading: {
     fontSize: '22px',
@@ -203,17 +193,17 @@ const styles = {
     marginBottom: '32px',
   },
   sectionHeading: {
-    fontSize: '22px', 
+    fontSize: '22px',
     fontWeight: '600',
     marginBottom: '16px',
-    color: '#000000', 
+    color: '#000000',
   },
   paragraph: {
     fontSize: '15px',
     lineHeight: '1.6',
     color: '#374151',
     textAlign: 'justify',
-    marginBottom: '16px', 
+    marginBottom: '16px',
   },
   list: {
     paddingLeft: '24px',
@@ -224,7 +214,7 @@ const styles = {
   },
   listItem: {
     marginBottom: '8px',
-    fontWeight:'bold'
+    fontWeight: 'bold'
   },
   visionText: {
     fontSize: '16px',
