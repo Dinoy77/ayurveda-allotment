@@ -57,7 +57,7 @@ const RegistrationPage = () => {
         if (files[key]) dataToSend.append(key, files[key]);
       });
 
-      const response = await fetch('/api/send-registration', { method: 'POST', body: dataToSend });
+      const response = await fetch('/send-registration.php', { method: 'POST', body: dataToSend });
       const data = await response.json();
       if (data.success) {
         setSubmitted(true);
@@ -93,15 +93,15 @@ const RegistrationPage = () => {
                 <h1 style={styles.pageTitle}>Student Registration Portal</h1>
                 <p style={styles.pageSubtitle}>Please fill in all the mandatory fields carefully before submitting.</p>
               </div>
-              
+
               <form onSubmit={handleSubmit} style={styles.form}>
-                
+
                 {/* ================= 1. Personal Details ================= */}
                 <div style={styles.sectionBlock}>
                   <div style={styles.sectionHeadingWrapper}>
                     <h3 style={styles.sectionHeading}>Personal Details</h3>
                   </div>
-                  
+
                   <div style={styles.grid2}>
                     <div style={styles.inputGroup}>
                       <label style={styles.label}>First Name <span style={styles.required}>*</span></label>
@@ -173,7 +173,7 @@ const RegistrationPage = () => {
                   <div style={styles.sectionHeadingWrapper}>
                     <h3 style={styles.sectionHeading}>Academic Details</h3>
                   </div>
-                  
+
                   <div style={styles.grid2}>
                     <div style={styles.inputGroup}>
                       <label style={styles.label}>10th Board Percentage <span style={styles.required}>*</span></label>
@@ -308,7 +308,7 @@ const RegistrationPage = () => {
                   <div style={styles.sectionHeadingWrapper}>
                     <h3 style={styles.sectionHeading}>Documents</h3>
                   </div>
-                  
+
                   <div style={styles.grid2}>
                     <div style={styles.inputGroup}>
                       <label style={styles.label}>Photo <span style={styles.required}>*</span></label>
@@ -406,7 +406,7 @@ const styles = {
   sectionHeading: {
     fontSize: '18px',
     fontWeight: '600',
-    color: '#0f2b5b', 
+    color: '#0f2b5b',
     margin: 0,
     display: 'inline-block',
     borderBottom: '3px solid #eab308', // Gold accent underline
