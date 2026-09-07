@@ -3,6 +3,7 @@ import TopBar from '../components/TopBar';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import paymentQR from '../assets/payment-qr.png';
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,10 @@ const RegistrationPage = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [paymentStep, setPaymentStep] = useState(false);
+  const [confirmingPayment, setConfirmingPayment] = useState(false);
   const [error, setError] = useState('');
+  const [orderId] = useState('APCI' + Date.now());
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -56,11 +60,12 @@ const RegistrationPage = () => {
       Object.keys(files).forEach((key) => {
         if (files[key]) dataToSend.append(key, files[key]);
       });
+      dataToSend.append('orderId', orderId);
 
       const response = await fetch('/send-registration.php', { method: 'POST', body: dataToSend });
       const data = await response.json();
       if (data.success) {
-        setSubmitted(true);
+        setPaymentStep(true);
       } else {
         setError(data.message || 'Submission failed. Please try again.');
       }
@@ -68,6 +73,32 @@ const RegistrationPage = () => {
       setError('An error occurred while submitting your registration.');
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handlePaymentConfirm = async () => {
+    setConfirmingPayment(true);
+    try {
+      const response = await fetch('/confirm-payment.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          amount: '1200',
+          orderId: orderId,
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error('Payment confirmation failed', err);
+      setSubmitted(true);
+    } finally {
+      setConfirmingPayment(false);
     }
   };
 
@@ -84,8 +115,33 @@ const RegistrationPage = () => {
               <div style={styles.successIcon}>✓</div>
               <h2 style={styles.successTitle}>Application Received!</h2>
               <p style={styles.successText}>
-                Your registration has been submitted successfully. Our admissions team will review your details and contact you shortly.
+                Your registration and payment confirmation have been submitted successfully. Our admissions team will review your details and contact you shortly.
               </p>
+            </div>
+          ) : paymentStep ? (
+            <div style={styles.successMessage}>
+              <h2 style={styles.successTitle}>Complete Your Payment</h2>
+              <p style={styles.successText}>
+                Please scan the QR code below and pay the application fee of <strong>₹1200</strong>.
+              </p>
+              <img
+                src={paymentQR}
+                alt="Payment QR Code"
+                style={{ width: '240px', margin: '24px auto', display: 'block' }}
+              />
+              <p style={{ ...styles.successText, fontSize: '13px', color: '#94a3b8' }}>
+                Reference ID: {orderId}
+              </p>
+              <div style={styles.submitWrapper}>
+                <button
+                  type="button"
+                  style={styles.submitBtn}
+                  onClick={handlePaymentConfirm}
+                  disabled={confirmingPayment}
+                >
+                  {confirmingPayment ? 'Confirming...' : "I've Paid"}
+                </button>
+              </div>
             </div>
           ) : (
             <>
@@ -135,7 +191,6 @@ const RegistrationPage = () => {
                         <option value="">-- Choose a Program --</option>
                         <option value="B.Pharm">B.Pharm</option>
                         <option value="D.Pharm">D.Pharm</option>
-                        {/* <option value="Pharm.D">Pharm.D</option> */}
                         <option value="M.Pharm">M.Pharm</option>
                       </select>
                     </div>
@@ -361,7 +416,7 @@ const RegistrationPage = () => {
 const styles = {
   pageWrapper: {
     fontFamily: 'system-ui, -apple-system, sans-serif',
-    backgroundColor: '#f1f5f9', // Slightly cooler, modern gray background
+    backgroundColor: '#f1f5f9',
     color: '#333',
     minHeight: '100vh',
     display: 'flex',
@@ -379,7 +434,7 @@ const styles = {
     maxWidth: '900px',
     borderRadius: '12px',
     boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)',
-    overflow: 'hidden', // Ensures the header banner stays within border radius
+    overflow: 'hidden',
   },
   pageTitle: {
     fontSize: '28px',
@@ -409,9 +464,9 @@ const styles = {
     color: '#0f2b5b',
     margin: 0,
     display: 'inline-block',
-    borderBottom: '3px solid #eab308', // Gold accent underline
+    borderBottom: '3px solid #eab308',
     paddingBottom: '6px',
-    marginBottom: '-10px', // Pull down over the gray border
+    marginBottom: '-10px',
   },
   grid2: {
     display: 'grid',
@@ -429,7 +484,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '8px',
-    alignItems: 'flex-start', // Fix requested previously
+    alignItems: 'flex-start',
     width: '100%',
   },
   label: {
@@ -449,7 +504,7 @@ const styles = {
     border: '1px solid #e2e8f0',
     borderRadius: '8px',
     fontSize: '14px',
-    backgroundColor: '#f8fafc', // Soft fill instead of white box
+    backgroundColor: '#f8fafc',
     color: '#0f172a',
     transition: 'all 0.2s ease',
     outline: 'none',
@@ -493,8 +548,8 @@ const styles = {
     alignItems: 'flex-start',
     gap: '14px',
     padding: '24px',
-    backgroundColor: '#f0f9ff', // Light blue background for declaration
-    borderLeft: '4px solid #0f2b5b', // Navy accent line
+    backgroundColor: '#f0f9ff',
+    borderLeft: '4px solid #0f2b5b',
     borderRadius: '0 8px 8px 0',
     marginBottom: '32px',
   },
@@ -517,16 +572,16 @@ const styles = {
     marginTop: '10px',
   },
   submitBtn: {
-    backgroundColor: '#0f2b5b', // Navy blue button
+    backgroundColor: '#0f2b5b',
     color: '#ffffff',
     border: 'none',
     padding: '16px 56px',
-    borderRadius: '30px', // Pill shape for modern look
+    borderRadius: '30px',
     fontSize: '16px',
     fontWeight: 'bold',
     letterSpacing: '0.5px',
     cursor: 'pointer',
-    boxShadow: '0 4px 14px rgba(15, 43, 91, 0.25)', // Colored shadow matching the button
+    boxShadow: '0 4px 14px rgba(15, 43, 91, 0.25)',
     transition: 'transform 0.1s ease, box-shadow 0.2s ease',
   },
   errorText: {
