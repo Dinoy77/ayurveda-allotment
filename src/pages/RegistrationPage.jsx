@@ -26,6 +26,7 @@ const RegistrationPage = () => {
   const [confirmingPayment, setConfirmingPayment] = useState(false);
   const [error, setError] = useState('');
   const [orderId] = useState('APCI' + Date.now());
+  const [utrNumber, setUtrNumber] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -88,6 +89,7 @@ const RegistrationPage = () => {
           phone: formData.phone,
           amount: '1200',
           orderId: orderId,
+          utrNumber: utrNumber,
         }),
       });
       const data = await response.json();
@@ -132,12 +134,29 @@ const RegistrationPage = () => {
               <p style={{ ...styles.successText, fontSize: '13px', color: '#94a3b8' }}>
                 Reference ID: {orderId}
               </p>
+
+              <div style={{ maxWidth: '320px', margin: '20px auto 0' }}>
+                <label style={styles.label}>
+                  UPI Transaction ID / UTR Number <span style={styles.required}>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={utrNumber}
+                  onChange={(e) => setUtrNumber(e.target.value)}
+                  placeholder="e.g. 123456789012"
+                  style={{ ...styles.input, marginTop: '8px' }}
+                />
+                <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '6px' }}>
+                  Found in your payment app's transaction/success screen after paying.
+                </p>
+              </div>
+
               <div style={styles.submitWrapper}>
                 <button
                   type="button"
                   style={styles.submitBtn}
                   onClick={handlePaymentConfirm}
-                  disabled={confirmingPayment}
+                  disabled={confirmingPayment || utrNumber.trim() === ''}
                 >
                   {confirmingPayment ? 'Confirming...' : "I've Paid"}
                 </button>
