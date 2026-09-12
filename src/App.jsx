@@ -6,6 +6,8 @@ import CourseDetails from './pages/CourseDetails';
 import AboutUs from './pages/AboutUs';
 import RegistrationPage from './pages/RegistrationPage';
 import ChatBot from './components/ChatBot';
+import ScopeOfPharmacy from './pages/ScopeOfPharmacy';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   return (
@@ -14,11 +16,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/scope-of-pharmacy" element={<ScopeOfPharmacy />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/courses" element={<CourseDetails />} />
           <Route path="/ug-pharmacy" element={<CourseDetails />} />
           <Route path="/pg-pharmacy" element={<CourseDetails />} />
-          <Route path="/contact" element={<CourseDetails />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <ChatBot />
       </div>

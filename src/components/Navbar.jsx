@@ -7,7 +7,8 @@ const Navbar = () => {
   const navItems = [
     { label: 'Home', path: '/' },
     { label: 'About Us', path: '/about' },
-    { label: 'UG Pharmacy', path: '/ug-pharmacy' }, 
+    { label: 'Scope of Pharmacy', path: '/scope-of-pharmacy' },
+    { label: 'UG Pharmacy', path: '/ug-pharmacy' },
     { label: 'PG Pharmacy', path: '/pg-pharmacy' },
     { label: 'Contact Us', path: '/contact' },
   ];
@@ -17,7 +18,7 @@ const Navbar = () => {
       <ul style={styles.navList}>
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
-          
+
           return (
             <li key={item.path} style={styles.listItem}>
               <Link
@@ -63,7 +64,7 @@ const styles = {
     userSelect: 'none',
     transition: 'background-color 0.2s ease',
     textDecoration: 'none',
-    color: 'inherit',   
+    color: 'inherit',
   },
   navItemActive: {
     backgroundColor: '#eab308',
