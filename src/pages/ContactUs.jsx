@@ -43,7 +43,7 @@ const ContactUs = () => {
             <div style={styles.extraSection}>
               <h3 style={styles.sectionHeading}>Contact Number</h3>
               <p style={styles.paragraph}>
-                Coming soon.
+                <a href="tel:+917736752425" style={styles.link}>+91 77367 52425</a>
               </p>
             </div>
           </div>
